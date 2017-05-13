@@ -28,8 +28,6 @@ def main(stroke=0):
     bitmap = blyph.bitmap
     width, rows, pitch = bitmap.width, bitmap.rows, bitmap.pitch
 
-    bbox = glyph.get_cbox(ft.FT_GLYPH_BBOX_GRIDFIT)
-
     print({
         'width': slot.metrics.width >> 6,
         'height': slot.metrics.height >> 6,
@@ -37,11 +35,7 @@ def main(stroke=0):
         'horiBearingY': slot.metrics.horiBearingY >> 6,
         'horiAdvance': slot.metrics.horiAdvance >> 6,
         'bitmapWidth': bitmap.width,
-        'bitmapHeight': bitmap.rows,
-        'xMin': bbox.xMin,
-        'xMax': bbox.xMax,
-        'yMin': bbox.yMin,
-        'yMax': bbox.yMax
+        'bitmapHeight': bitmap.rows
         })
     img = Image.new("L", (width, rows), "black")
     pixels = img.load()
